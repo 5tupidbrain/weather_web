@@ -1,0 +1,86 @@
+
+.home{
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 120px;
+  width: 100%;
+  padding: 24px;
+}
+#search_loc{
+  padding: 8px;
+  background:none;
+  height: 52px;
+  min-width: 52px;
+  border: none;
+  opacity: 0.75;
+  transition: ease-in-out 0.2s;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#search_loc:hover{
+  opacity: 1;
+}
+#location{
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1em;
+  width: 280px;
+  text-align: center;
+  border: none;
+  background-color: rgba(96, 117, 158, 0.4);
+  border-radius: 35px;
+}
+#location:focus{
+  background-color: rgba(96, 117, 158, 0.5);
+  text-align: start;
+}
+#thermo{
+  color: #fff;
+  padding: 8px;
+  background:none;
+  border: none;
+  opacity: 0.75;
+  transition: ease-in-out 0.2s;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+.location_f{
+  margin-top: 32px;
+  font-weight: 300;
+  letter-spacing: 0.30px;
+  font-size: 1em;
+}
+.i_deg{
+  margin: 36px 0;
+}
+.deg{
+  font-size: 4em;
+}
+.dt_tm{
+  font-size: 0.8em;
+}
+.card{
+  margin-top: 18px;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+}
+.w_week{
+  height: 100px;
+  width: 320px;
+}
+.w_forecast{
+  height: 320px;
+  width: 320px;
+}
