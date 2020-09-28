@@ -24,7 +24,7 @@ class Home extends Component {
         var location = document.getElementById('location').value || 'Jabalpur';
         var api_key = '3faadbb73e7e4c4fb09132852202809';
         var days=1;
-        var api = `http://api.weatherapi.com/v1/current.json?key=${api_key}&q=${location}&days=${days}`;
+        var api = `//api.weatherapi.com/v1/current.json?key=${api_key}&q=${location}&days=${days}`;
         console.log(this.state.city);
 
         var obj;
