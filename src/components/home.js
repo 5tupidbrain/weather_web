@@ -10,6 +10,14 @@ class Home extends Component {
         }
     }
 
+    day_night() {
+        let dt = new Date();
+        let loc= document.getElementById('location').style;
+        loc.color='#000'
+        loc.backgroundColor='rgba(255,255,255,0.4)';
+        document.body.style.backgroundImage = (dt.getHours() < 19) ? 'linear-gradient(-165deg,#eb9359 18%,#169e80 82%)' : 'linear-gradient(-170deg,#101114 10%,#222a3b 65%,#883655)';
+    }
+
     dt_tm() {
         let op_dt = { year: 'numeric', month: 'long', day: 'numeric' };
         let dt = new Date();
@@ -77,6 +85,7 @@ class Home extends Component {
 
 
     componentDidMount() {
+        this.day_night();
         this.dt_tm();
         // this.ip_api();
         this.weather_api();
