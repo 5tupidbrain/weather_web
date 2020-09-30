@@ -1,4 +1,5 @@
 #footer{
+    background-color: rgba(24, 24, 24,0.3);
     margin-top: 56px;
     height: 120px;
     width: 100%;
@@ -20,10 +21,11 @@
     font-weight: 500;
 }
 .f_logo{
-    height: 64px;
-    width: 64px;
     margin: auto;
     margin-bottom: 12px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 12px;
+}
+.f_logo img{
+    height: 64px;
+    width: auto;
+    object-fit: cover;
 }
