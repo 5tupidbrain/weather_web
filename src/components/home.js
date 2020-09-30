@@ -12,9 +12,9 @@ class Home extends Component {
 
     day_night() {
         let dt = new Date();
-        let loc= document.getElementById('location').style;
-        loc.color='#000'
-        loc.backgroundColor='rgba(255,255,255,0.4)';
+        let loc = document.getElementById('location').style;
+        loc.color = '#000'
+        loc.backgroundColor = 'rgba(255,255,255,0.4)';
         document.body.style.backgroundImage = (dt.getHours() < 19) ? 'linear-gradient(-165deg,#eb9359 18%,#169e80 82%)' : 'linear-gradient(-170deg,#101114 10%,#222a3b 65%,#883655)';
     }
 
@@ -41,8 +41,8 @@ class Home extends Component {
     async weather_api() {
         let location = document.getElementById('location').value || 'Jabalpur';
         let api_key = '3faadbb73e7e4c4fb09132852202809';
-        let days = 1;
-        let api = `//api.weatherapi.com/v1/current.json?key=${api_key}&q=${location}&days=${days}`;
+        let days = 3;
+        let api = `//api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${location}&days=${days}`;
 
         let obj;
         await fetch(api).then(res => res.json()).then(data => obj = data)
@@ -57,6 +57,7 @@ class Home extends Component {
                 let humidity = obj.current.humidity;
                 let cloud = obj.current.cloud;
 
+
                 document.getElementById('loc').innerHTML = `${loc}, ${loc_r}`;
                 document.getElementById('deg').innerHTML = `${temp_c}<sup>&deg;C</sup>`;
                 document.getElementById('condition').innerHTML = condition;
@@ -65,6 +66,25 @@ class Home extends Component {
                 document.getElementById('wind_mph').innerHTML = wind_mph;
                 document.getElementById('humidity').innerHTML = `${humidity}%`;
                 document.getElementById('cloud').innerHTML = `${cloud}%`;
+
+                //Forecast
+                let fore = obj.forecast.forecastday;
+                let len_fore = (fore).length;
+
+                let op_dt = { year: 'numeric', month: 'short', day: 'numeric' };
+                let dt = new Date().getTime() + 86400000 + 86400000;
+                let dat = new Date(dt);
+                document.getElementById('date2').innerHTML = dat.toLocaleString("en-US", op_dt);
+                var i;
+                for (i = 0; i < len_fore; i++) {
+                    document.getElementById(`condition${i}`).innerHTML = fore[i].day.condition.text;
+                    document.getElementById(`min_temp${i}`).innerHTML = `${fore[i].day.mintemp_c}<sup>°C<sup>`;
+                    document.getElementById(`max_temp${i}`).innerHTML = `${fore[i].day.maxtemp_c}<sup>°C<sup>`;
+                    document.getElementById(`sunrise${i}`).innerHTML = fore[i].astro.sunrise;
+                    document.getElementById(`sunset${i}`).innerHTML = fore[i].astro.sunset;
+
+
+                }
 
             });
     }
@@ -159,11 +179,95 @@ class Home extends Component {
                         </div>
                     </div>
                     <br />
+
                     <div className='card w_week'>
+
+                        <div className='days'>
+
+                            <div>
+                                <h4 id='date0'>Today</h4>
+                                <p id='condition0'>------</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 id='max_temp0'>- -</h3>
+                                    <p>Max temp</p>
+                                </div>
+                                <div>
+                                    <h3 id='min_temp0'>- -</h3>
+                                    <p>Min temp</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 id='sunrise0'>- -</h3>
+                                    <p>Sunrise</p>
+                                </div>
+                                <div>
+                                    <h3 id='sunset0'>- -</h3>
+                                    <p>Sunset</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='days'>
+
+                            <div>
+                                <h4 id='date1'>Tommorow</h4>
+                                <p id='condition1'>------</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 id='max_temp1'>- -</h3>
+                                    <p>Max temp</p>
+                                </div>
+                                <div>
+                                    <h3 id='min_temp1'>- -</h3>
+                                    <p>Min temp</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 id='sunrise1'>- -</h3>
+                                    <p>Sunrise</p>
+                                </div>
+                                <div>
+                                    <h3 id='sunset1'>- -</h3>
+                                    <p>Sunset</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='days'>
+
+                            <div>
+                                <h3 id='date2'>-- -- --</h3>
+                                <p id='condition2'>------</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 id='max_temp2'>- -</h3>
+                                    <p>Max temp</p>
+                                </div>
+                                <div>
+                                    <h3 id='min_temp2'>- -</h3>
+                                    <p>Min temp</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3 id='sunrise2'>- -</h3>
+                                    <p>Sunrise</p>
+                                </div>
+                                <div>
+                                    <h3 id='sunset2'>- -</h3>
+                                    <p>Sunset</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-
             </div>
         )
     }
